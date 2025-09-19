@@ -1,0 +1,14 @@
+resources:
+  jobs:
+    IngestionJob:
+      name: IngestionJob
+      tasks:
+        - task_key: ingestion_task
+          notebook_task:
+            notebook_path: ../../src/Notebooks/ingestion.ipynb
+            base_parameters:
+              catalog_nm: ${var.catalog_name}
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
